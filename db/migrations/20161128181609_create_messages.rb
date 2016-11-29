@@ -7,7 +7,7 @@ Hanami::Model.migration do
       column :token,            String, null: false
 
       column :visits_remaining  Integer
-      column :expiration_time,  DateTime, null: false
+      column :expiration_time,  DateTime
 
       column :created_at, DateTime, null: false
       column :updated_at, DateTime, null: false
