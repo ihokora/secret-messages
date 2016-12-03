@@ -1,0 +1,24 @@
+<h2>Create Secret Message</h2>
+
+<%=
+  form_for :message, '/messages' do
+    div class: 'input' do
+      label      :text
+      text_field :text
+    end
+
+    div class: 'input' do
+      label      :visits_remaining
+      text_field :visits_remaining
+    end
+
+    div class: 'input' do
+      label      :hours_before_destroy
+      text_field :hours_before_destroy
+    end
+
+    div class: 'controls' do
+      submit 'Create Message'
+    end
+  end
+%>
