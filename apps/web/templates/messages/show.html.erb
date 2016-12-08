@@ -1,0 +1,13 @@
+<h2>Your Secret-Self-Destruct Message</h2>
+
+<% unless message.nil? %>
+  <div id="message">
+      <div class="message">
+        <h2><%= message.text %></h2>
+        <p><%= message_visits_remains %></p>
+        <p><%= message_expiration_time %></p>
+      </div>
+  </div>
+<% else %>
+  <p class="placeholder">Nothing is here... This message has been destroyed or never existed</p>
+<% end %>
