@@ -1,5 +1,7 @@
 require 'hanami/helpers'
 require 'hanami/assets'
+require 'openssl'
+require 'base64'
 
 module Web
   class Application < Hanami::Application
