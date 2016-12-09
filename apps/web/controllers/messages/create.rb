@@ -5,7 +5,7 @@ module Web::Controllers::Messages
     before :prepare_message
 
     def call(params)
-      redirect_to private_link
+      redirect_to routes.message_path(id: @message.private_id)
     end
 
 
@@ -16,12 +16,6 @@ module Web::Controllers::Messages
         message.encrypt!
         @message = MessageRepository.new.create(message)
       end
-
-      def private_link
-        routes.messages_path + "/" + @message.private_id
-      end
-
-
 
   end
 end
