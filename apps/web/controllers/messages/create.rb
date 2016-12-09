@@ -12,14 +12,13 @@ module Web::Controllers::Messages
     private
 
       def prepare_message
-        @message = Message.new(params[:message])
-        @message.encrypt!
-        @message = MessageRepository.new.create(@message)
+        message = Message.new(params[:message])
+        message.encrypt!
+        @message = MessageRepository.new.create(message)
       end
 
       def private_link
-        encrypted_id = @message.encrypt_id
-        routes.messages_path + "/" + encrypted_id
+        routes.messages_path + "/" + @message.private_id
       end
 
 
