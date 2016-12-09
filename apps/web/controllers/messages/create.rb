@@ -18,7 +18,8 @@ module Web::Controllers::Messages
       end
 
       def private_link
-        routes.messages_path + "/" + @message.id.to_s
+        encrypted_id = @message.encrypt_id
+        routes.messages_path + "/" + encrypted_id
       end
 
 
