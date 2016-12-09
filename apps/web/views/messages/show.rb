@@ -21,7 +21,7 @@ module Web::Views::Messages
 
     def message_visits_remains
       if message.visits_remains
-        p "Vies left: #{message.visits_remains}"
+        p "Views left: #{message.visits_remains}"
       end
     end
   end
