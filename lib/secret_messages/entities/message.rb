@@ -1,6 +1,6 @@
 class Message < Hanami::Entity
 
-  def encrypt
+  def encrypt!
     cipher = OpenSSL::Cipher::AES.new(128, :CBC)
     cipher.encrypt
     attributes[:key] = cipher.random_key

@@ -13,7 +13,7 @@ module Web::Controllers::Messages
 
       def prepare_message
         @message = Message.new(params[:message])
-        @message.encrypt
+        @message.encrypt!
         @message = MessageRepository.new.create(@message)
       end
 
