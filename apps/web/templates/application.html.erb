@@ -8,11 +8,8 @@
     <title>Secret Messages</title>
 
     <%= favicon %>
-    <%= javascript 'jquery-2.2.4.min' %>
-    <%= javascript 'bootstrap.min' %>
-    <%= stylesheet 'bootstrap.min' %>
-    <%= stylesheet 'sticky-footer-navbar' %>
-    <%= stylesheet 'bootstrap-theme.min' %>
+    <%= javascript 'jquery-2.2.4.min', 'bootstrap.min', 'app' %>
+    <%= stylesheet 'bootstrap.min', 'sticky-footer-navbar' %>
   </head>
   <body>
     <%= render partial: 'messages/navbar' %>
