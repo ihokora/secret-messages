@@ -2,23 +2,17 @@
 
 <%=
   form_for :message, '/messages' do
-    div class: 'input' do
-      label      :text
-      text_field :text
+    div class: 'form-group input-group' do
+      span 'Text', class: 'input-group-addon'
+      text_area :text, class: 'form-control', placeholder: 'Please enter your message here', rows: '4', required: true
     end
 
-    div class: 'input' do
-      label      :visits_remains
-      text_field :visits_remains
-    end
-
-    div class: 'input' do
-      label      :time_remains
-      text_field :time_remains
+    div class: 'form-group' do
+      accordion_options
     end
 
     div class: 'controls' do
-      submit 'Create Message'
+      submit 'Create Message', class: 'btn btn-primary'
     end
   end
 %>

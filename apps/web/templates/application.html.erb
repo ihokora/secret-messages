@@ -12,13 +12,18 @@
     <%= javascript 'bootstrap.min' %>
     <%= stylesheet 'bootstrap.min' %>
     <%= stylesheet 'sticky-footer-navbar' %>
+    <%= stylesheet 'bootstrap-theme.min' %>
   </head>
   <body>
     <%= render partial: 'messages/navbar' %>
 
     <div class="container">
-      <div class="jumbotron">
-        <%= yield %>
+      <div class="row">
+        <div class="col-md-5 col-md-offset-3">
+
+          <%= yield %>
+
+        </div>
       </div>
     </div>
 
