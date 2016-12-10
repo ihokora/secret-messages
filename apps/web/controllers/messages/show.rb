@@ -2,9 +2,9 @@ module Web::Controllers::Messages
   class Show
     include Web::Action
 
-    before :find_message, :private_link
+    before :find_message
 
-    expose :message, :private_link
+    expose :message
 
     def call(params)
 
@@ -17,8 +17,5 @@ module Web::Controllers::Messages
         @message = MessageRepository.new.find(id)
       end
 
-      def private_link
-        @private_link = routes.message_url(id: @message.private_id)
-      end
   end
 end

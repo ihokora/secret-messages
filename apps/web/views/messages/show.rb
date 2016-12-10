@@ -15,7 +15,7 @@ module Web::Views::Messages
 
     def message_expiration_time
       if message.expiration_time
-        p "Message will be destroyed at: #{(message.expiration_time).localtime}"
+        p "Message will be destroyed at: #{(message.expiration_time).localtime.strftime("%Y-%m-%d %H:%M:%S")}"
       end
     end
 
@@ -23,6 +23,10 @@ module Web::Views::Messages
       if message.visits_remains
         p "Views left: #{message.visits_remains}"
       end
+    end
+
+    def message_private_link
+      routes.message_url(id: message.private_id)
     end
   end
 end
