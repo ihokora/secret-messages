@@ -14,6 +14,7 @@ module Web::Controllers::Messages
       def prepare_message
         message = Message.new(params[:message])
         message.encrypt!
+        message.set_expiration_time unless message.time_remains.nil?
         @message = MessageRepository.new.create(message)
       end
 

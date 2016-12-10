@@ -1,4 +1,5 @@
 class Message < Hanami::Entity
+  HOUR = 60 * 60
 
   def encrypt!
     cipher = OpenSSL::Cipher::AES.new(128, :CBC)
@@ -14,9 +15,12 @@ class Message < Hanami::Entity
     plain = decipher.update(self.text) + decipher.final
   end
 
-  def private_id
-    self.encrypt_id
+  def set_expiration_time
+    time_remains = self.time_remains * HOUR
+    attributes[:expiration_time] = Time.now + time_remains
   end
+
+
 
 
   # id hashing methods for generating private links
@@ -34,6 +38,10 @@ class Message < Hanami::Entity
     decipher.decrypt
     decipher.key = @@id_key
     decrypted_id = decipher.update([encrypted_id].pack('H*')) + decipher.final
+  end
+
+  def private_id
+    self.encrypt_id
   end
 
 end

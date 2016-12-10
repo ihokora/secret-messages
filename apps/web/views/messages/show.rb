@@ -15,7 +15,7 @@ module Web::Views::Messages
 
     def message_expiration_time
       if message.expiration_time
-        p "Message will be destroyed at: #{message.expiration_time}"
+        p "Message will be destroyed at: #{(message.expiration_time).localtime}"
       end
     end
 
