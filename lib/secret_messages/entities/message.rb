@@ -21,8 +21,6 @@ class Message < Hanami::Entity
   end
 
 
-
-
   # id hashing methods for generating private links
   @@id_key = Digest::SHA256.digest('SecretPassword')
 
@@ -42,6 +40,11 @@ class Message < Hanami::Entity
 
   def private_id
     self.encrypt_id
+  end
+
+  def subtract_visit
+    visits_remains = self.visits_remains - 1
+    MessageRepository.new.update(self.id, visits_remains: visits_remains)
   end
 
 end

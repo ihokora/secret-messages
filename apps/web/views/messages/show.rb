@@ -20,7 +20,9 @@ module Web::Views::Messages
     end
 
     def message_visits_remains
-      if message.visits_remains
+      if message.visits_remains == 0
+        p 'No more views. Message has been destoyed!'
+      elsif message.visits_remains
         p "Views left: #{message.visits_remains}"
       end
     end

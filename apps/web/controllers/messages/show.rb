@@ -7,7 +7,7 @@ module Web::Controllers::Messages
     expose :message
 
     def call(params)
-
+      @message.subtract_visit unless @message.visits_remains.nil?
     end
 
     private
