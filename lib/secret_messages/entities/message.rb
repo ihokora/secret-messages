@@ -47,4 +47,9 @@ class Message < Hanami::Entity
     MessageRepository.new.update(self.id, visits_remains: visits_remains)
   end
 
+  def expired?
+    return self.visits_remains <= 0        unless self.visits_remains.nil?
+    return self.expiration_time < Time.now unless self.expiration_time.nil?
+  end
+
 end

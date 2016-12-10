@@ -7,7 +7,8 @@ module Web::Controllers::Messages
     expose :message
 
     def call(params)
-      @message.subtract_visit unless @message.visits_remains.nil?
+      MessageRepository.new.delete(@message.id) if @message&.expired?
+      @message.subtract_visit                   unless @message&.visits_remains.nil?
     end
 
     private
