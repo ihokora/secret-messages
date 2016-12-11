@@ -2,13 +2,13 @@ module Web::Controllers::Messages
   class Show
     include Web::Action
 
-    before :find_message
+    before :destroy_message_if_expired
 
     expose :message
 
     def call(params)
-      MessageRepository.new.delete(@message.id) if @message&.expired?
-      @message.subtract_visit                   unless @message&.visits_remains.nil?
+      find_message
+      @message.subtract_visit   unless @message&.visits_remains.nil?
     end
 
     private
@@ -16,6 +16,11 @@ module Web::Controllers::Messages
       def find_message
         id = Message.decrypt_id(params[:id])
         @message = MessageRepository.new.find(id)
+      end
+
+      def destroy_message_if_expired
+        find_message
+        MessageRepository.new.delete(@message.id) if @message&.expired?
       end
 
   end
