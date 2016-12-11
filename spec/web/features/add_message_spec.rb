@@ -8,8 +8,10 @@ RSpec.describe 'Add message' do
   it 'can create a new message' do
     visit '/messages/new'
 
-    fill_in 'Text',             with: 'This is super-secret message'
-    fill_in 'Visits remaining', with: 3
+    fill_in 'text_input', with: 'This is super-secret message'
+    click_on 'visits_panel'
+    fill_in 'visit_input', with: 3
+    fill_in 'time_input', with: 2
 
     click_button 'Create'
   end

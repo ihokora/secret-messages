@@ -9,8 +9,8 @@ module Web::Views::Messages
 
           div(class: 'panel-heading') do
             h4 class: 'panel-title'
-              a 'Hours', 'data-toggle': 'collapse',
-                'data-parent': '#accordion', 'href': '#collapse1'
+              a 'Destroy by Hours', 'data-toggle': 'collapse',
+                'data-parent': '#accordion', 'href': '#collapse1', id: 'time_panel'
           end
 
           div(id: 'collapse1', class: 'panel-collapse collapse') do
@@ -29,11 +29,11 @@ module Web::Views::Messages
 
           div(class: 'panel-heading') do
             h4 class: 'panel-title'
-             a 'Views', 'data-toggle': 'collapse',
-                'data-parent': '#accordion', 'href': '#collapse2'
+             a 'Destroy by Views', 'data-toggle': 'collapse',
+                'data-parent': '#accordion', 'href': '#collapse2', id: 'visits_panel'
           end
 
-          div(id: 'collapse2', class: 'panel-collapse collapse') do
+          div(id: 'collapse2', class: 'panel-collapse collapse in') do
             div( class: 'panel-body') do
               div class: 'input-group' do
                 span 'Views', class: 'input-group-addon'

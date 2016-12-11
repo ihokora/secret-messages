@@ -4,6 +4,8 @@ module Web::Controllers::Messages
 
     before :prepare_message
 
+    expose :message
+
     def call(params)
       redirect_to routes.message_path(id: @message.private_id)
     end

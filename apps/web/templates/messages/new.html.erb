@@ -2,9 +2,9 @@
 
 <%=
   form_for :message, '/messages' do
-    div class: 'form-group input-group' do
-      span 'Text', class: 'input-group-addon'
-      text_area :text, class: 'form-control', placeholder: 'Please enter your message here', rows: '4', required: true
+    div class: 'form-group' do
+      text_area :text, id: 'text_input', class: 'form-control', placeholder: 'Please enter your message here', rows: '4', required: true
+
     end
 
     div class: 'form-group' do
