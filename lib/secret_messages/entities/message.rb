@@ -48,8 +48,11 @@ class Message < Hanami::Entity
   end
 
   def expired?
-    return self.visits_remains < 0        unless self.visits_remains.nil?
-    return self.expiration_time < Time.now unless self.expiration_time.nil?
+    if self.visits_remains
+      return self.visits_remains < 0
+    elsif self.expiration_time
+      return self.expiration_time < Time.now
+    end
   end
 
 end

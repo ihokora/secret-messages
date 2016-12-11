@@ -8,7 +8,7 @@ module Web::Controllers::Messages
 
     def call(params)
       find_message
-      @message.subtract_visit   unless @message&.visits_remains.nil?
+      @message.subtract_visit   if @message&.visits_remains
     end
 
     private
