@@ -28,7 +28,7 @@ module Web::Views::Messages
     end
 
     def message_private_link
-      routes.message_url(id: message.private_id)
+      routes.message_path(id: message.private_id)
     end
   end
 end
