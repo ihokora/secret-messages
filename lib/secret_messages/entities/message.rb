@@ -4,15 +4,19 @@ class Message < Hanami::Entity
   def encrypt!
     cipher = OpenSSL::Cipher::AES.new(128, :CBC)
     cipher.encrypt
-    attributes[:key] = cipher.random_key
-    attributes[:text] = cipher.update(attributes[:text]) + cipher.final
+    encoded_key = cipher.random_key
+    attributes[:key] = Base64.encode64(encoded_key).encode('utf-8')
+    encrypted = cipher.update(attributes[:text]) + cipher.final
+    attributes[:text] = Base64.encode64(encrypted).encode('utf-8')
   end
 
   def decrypt
     decipher = OpenSSL::Cipher::AES.new(128, :CBC)
     decipher.decrypt
-    decipher.key = self.key
-    plain = decipher.update(self.text) + decipher.final
+    decoded_key = Base64.decode64(self.key).encode('ascii-8bit')
+    decipher.key = decoded_key
+    decoded = Base64.decode64(self.text).encode('ascii-8bit')
+    plain = decipher.update(decoded) + decipher.final
   end
 
   def set_expiration_time
