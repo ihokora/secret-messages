@@ -1,16 +1,18 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
+
 gem 'bundler'
 gem 'rake'
 gem 'hanami',       '~> 0.9'
 gem 'hanami-model', '~> 0.7'
 
-gem 'sqlite3'
 
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading
   gem 'shotgun'
+  gem 'sqlite3'
 end
 
 group :test, :development do
@@ -24,4 +26,5 @@ end
 
 group :production do
   # gem 'puma'
+  gem 'pg'
 end
