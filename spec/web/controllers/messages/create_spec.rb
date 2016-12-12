@@ -5,7 +5,7 @@ RSpec.describe Web::Controllers::Messages::Create do
   let(:action) { Web::Controllers::Messages::Create.new }
   let(:params) { Hash[message: {text: "secret", visits_remains: 1, time_remains: 1}] }
 
-  before do
+  after do
     MessageRepository.new.clear
   end
 
@@ -23,3 +23,4 @@ RSpec.describe Web::Controllers::Messages::Create do
     expect(response[0]).to eq 302
   end
 end
+
